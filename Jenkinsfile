@@ -1,10 +1,10 @@
 pipeline{
     agent any
+    environment{
+        source = ''
+        destination = ''
+    }
     stages{
-        environment{
-            source = ''
-            destination = ''
-        }
         stage("interactive input"){
             steps{
                 script{
