@@ -1,28 +1,28 @@
 pipeline{
     agent any
-    environment{
-        source = ''
-        destination = ''
-    }
+    // environment{
+    //     source = ''
+    //     destination = ''
+    // }
     stages{
-        stage("interactive input"){
-            steps{
-                script{
-                    //def source
-                    //def destination
-                    def userInput = input(
-                        id: 'userInput', message: 'Enter source & destination path:', parameters:[
-                            string(defaultValue: 'none', description: 'Path for source file', name: 'src'),
-                            string(defaultValue: 'none', description: 'Path for destination file', name: 'dest')
-                        ]
-                    )
-                    source = userInput.src
-                    destination = userInput.dest
-                    echo("source: ${source}")
-                    echo("destination: ${destination}")
-                }
-            }
-        }
+        // stage("interactive input"){
+        //     steps{
+        //         script{
+        //             //def source
+        //             //def destination
+        //             def userInput = input(
+        //                 id: 'userInput', message: 'Enter source & destination path:', parameters:[
+        //                     string(defaultValue: 'none', description: 'Path for source file', name: 'src'),
+        //                     string(defaultValue: 'none', description: 'Path for destination file', name: 'dest')
+        //                 ]
+        //             )
+        //             source = userInput.src
+        //             destination = userInput.dest
+        //             echo("source: ${source}")
+        //             echo("destination: ${destination}")
+        //         }
+        //     }
+        // }
         stage('Deploy file'){
             steps{
                 bat("COPY /a ${source} ${destination}")
