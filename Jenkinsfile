@@ -1,11 +1,15 @@
 pipeline{
     agent any
     stages{
+        environment{
+            source = ''
+            destination = ''
+        }
         stage("interactive input"){
             steps{
                 script{
-                    def source
-                    def destination
+                    //def source
+                    //def destination
                     def userInput = input(
                         id: 'userInput', message: 'Enter source & destination path:', parameters:[
                             string(defaultValue: 'none', description: 'Path for source file', name: 'src'),
