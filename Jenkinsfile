@@ -3,7 +3,8 @@ pipeline{
     stages{
         stage('Deploy file'){
             steps{
-                bat "scp /XebiaLabs/temp/script_output_20200218081914.txt teodik:teodik-VirtualBox:/home/teodik" 
+                bat "COPY /XebiaLabs/temp/script_output_20200218081914.txt teodik:teodik-VirtualBox:/home/teodik" 
+                //sh "sh /XebiaLabs/temp/script_output_20200218081914.txt teodik:teodik-VirtualBox:/home/teodik"
             }
         }
     }
