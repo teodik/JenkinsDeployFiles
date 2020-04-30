@@ -18,9 +18,9 @@ pipeline{
                     }
                     bat('dir')
                 }
-                bat('copy /A bitbucket\aggregate\README.md github\aggregate\README.md')
+                bat('copy /A bitbucket/aggregate/README.md github/aggregate/README.md')
                 dir('github/aggregate'){
-                    bat('git push')
+                    bat('git push origin master')
                 }
             }
         }
