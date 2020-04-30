@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('Deploy file'){
             steps{
-                cleanWs()
+                deleteDir()
                 bat('mkdir bitbucket')
                 bat('mkdir github')
                 dir('bitbucket'){
