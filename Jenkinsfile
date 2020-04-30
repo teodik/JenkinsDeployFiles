@@ -11,16 +11,14 @@ pipeline{
                         checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-account', url: 'https://teodik1979@bitbucket.org/teodik1979/aggregate.git']]])
                     }
                     bat('dir')
+                    bat("git filter-branch --index-filter 'git rm --cached --ignore-unmatch .gitmodules' HEAD")
+                    bat('dir')
                 }
                 dir('github'){
                     script{
                         checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-account', url: 'https://github.com/teodik/aggregate.git']]])
                     }
                     bat('dir')
-                }
-                bat('copy /A bitbucket/README.md github/README.md')
-                dir('github'){
-                    bat('git push origin master')
                 }
             }
         }
