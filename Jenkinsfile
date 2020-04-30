@@ -3,7 +3,6 @@ pipeline{
     stages{
         stage('Deploy file'){
             steps{
-                deleteDir()
                 bat('mkdir bitbucket')
                 bat('mkdir github')
                 dir('bitbucket'){
@@ -21,6 +20,11 @@ pipeline{
                     bat('git push')
                 }
             }
+        }
+    }
+    post{
+        always{
+            cleanWs()
         }
     }
 }
