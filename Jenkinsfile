@@ -11,7 +11,7 @@ pipeline{
                         checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-account', url: 'https://teodik1979@bitbucket.org/teodik1979/aggregate.git']]])
                     }
                     bat('dir')
-                    bat("git filter-branch --tree-filter 'rm -f .gitmodules' HEAD")
+                    bat("git filter-branch --subdirectory-filter README.me --all")
                     bat('dir')
                 }
                 dir('github'){
